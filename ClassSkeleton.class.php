@@ -191,14 +191,10 @@ class Card {
 		$this->id = rand(0, 10000);
 	}
 
-	public function getId(){
-		return $this->id;
-	}
-
 	public function match($candidate){
 		if(is_object($candidate) && $this === $candidate){
 			return true;
-		} else if (is_integer($candidate) && $this->getId() == $candidate){
+		} else if (is_integer($candidate) && $this->id == $candidate){
 			return true;
 		} else {
 			return false;
