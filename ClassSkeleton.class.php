@@ -182,22 +182,3 @@ class CardCollection {
 		return count($this->cards);
 	}
 }
-
-//Class that represents a simple playing card
-class Card {
-	protected $id;
-
-	public function __construct(){
-		$this->id = rand(0, 10000);
-	}
-
-	public function match($candidate){
-		if(is_object($candidate) && $this === $candidate){
-			return true;
-		} else if (is_integer($candidate) && $this->id == $candidate){
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
