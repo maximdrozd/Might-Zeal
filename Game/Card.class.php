@@ -1,4 +1,5 @@
 <?php
+require_once("DefaultRequires.php");
 require_once("Enum/CardRarity.enum.php");
 
 class Card {
@@ -16,16 +17,16 @@ class Card {
 
 	public function __construct($parameterMap){
 		$this->id = rand(0, 10000); //fake, replace with param
-		$this->name = ($parameterMap->name) ? $parameterMap->name : "unknown";
-		$this->description = ($parameterMap->description) ? $parameterMap->description : "unknown";
-		$this->image = ($parameterMap->image) ? $parameterMap->image : "unknown";
-		$this->suit = ($parameterMap->suit) ? $parameterMap->suit : "unknown";
-		$this->rarity = ($parameterMap->rarity) ? $parameterMap->rarity : CardRarity::UNKNOWN;
-		$this->type = ($parameterMap->type) ? $parameterMap->type : "unknown";
-		$this->attack = ($parameterMap->attack) ? $parameterMap->attack : "unknown";
-		$this->life = ($parameterMap->life) ? $parameterMap->life : "unknown";
-		$this->defense = ($parameterMap->defense) ? $parameterMap->defense : "unknown";
-		$this->specialFlags = ($parameterMap->specialFlags) ? $parameterMap->specialFlags : "unknown";
+		$this->name = initWithVar("name", $parameterMap, "Default Name");
+		$this->description = initWithVar("description", $parameterMap, "Default Description can be rather long");
+		$this->image = initWithVar("image", $parameterMap);
+		$this->suit = initWithVar("suit", $parameterMap);
+		$this->rarity = initWithVar("rarity", $parameterMap, CardRarity::UNKNOWN);
+		$this->type = initWithVar("type", $parameterMap);
+		$this->attack = initWithVar("attack", $parameterMap, 0);
+		$this->life = initWithVar("life", $parameterMap, 0);
+		$this->defense = initWithVar("defense", $parameterMap, 0);
+		$this->specialFlags = initWithVar("specialFlags", $parameterMap);
 	}
 
 	public function match($candidate){
@@ -38,3 +39,4 @@ class Card {
 		}
 	}
 }
+

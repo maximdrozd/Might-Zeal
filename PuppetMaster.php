@@ -1,20 +1,13 @@
 <?php
-require_once("ClassSkeleton.class.php");
+require_once("Game/Card.class.php");
 
-$game = new Game();
+$card = new Card(array());
 
-$command = (isset($_REQUEST["com"])) ? $_REQUEST["com"] : null;
-
-switch ($command) {
+switch ($argv[1]) {
 	case 'show':
 		# code...
 		break;
-	
 	default:
-		# code...
+		var_dump($card);
 		break;
 }
-
-echo "<pre>";
-var_dump($game);
-echo "</pre>";
