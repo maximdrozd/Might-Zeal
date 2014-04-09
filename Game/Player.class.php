@@ -23,16 +23,15 @@ class Player {
 		$this->name = initWithVar("name", $parameterMap, "Name");
 	}
 
-	//Plays a card from Hand. Applies any effects (eventually)
 	public function playCard($cardId){
 		$card = $this->hand->find($cardId);
 		if($card){
 			$this->hand->pop($card);
 			$this->arena->push($card);
+			//TODO: call card play callback
 		}
 	}
 
-	//Draws a new card from Deck
 	public function drawCard(){
 		$card = $this->deck->draw();
 		if($card){
@@ -48,19 +47,55 @@ class Player {
 		$this->deck->mix();
 	}
 
-	public function returnCardToHand(){
-
+	public function returnCardToHand($cardId){
+		/*
+		$card = $this->arena->find($cardId);
+		if($card){
+			$this->arena->pop($card);
+			$this->hand->push($card);
+		}
+		*/
+		$this->moveCard($cardId, $this->arena, $this->hand);
 	}
 
-	public function returnCardToDeck(){
-
+	public function returnCardToDeck($cardId){
+		/*
+		$card = $this->arena->find($cardId);
+		if($card){
+			$this->arena->pop($card);
+			$this->deck->push($card);
+		}
+		*/
+		$this->moveCard($cardId, $this->arena, $this->deck);
 	}
 
-	public function discardCardFromHand(){
-
+	public function discardCardFromHand($cardId){
+		/*
+		$card = $this->hand->find($cardId);
+		if($card){
+			$this->hand->pop($card);
+			$this->discard->push($card);
+		}
+		*/
+		$this->moveCard($cardId, $this->hand, $this->discard);
 	}
 
-	public function discardCardFromArena(){
+	public function discardCardFromArena($cardId){
+		/*
+		$card = $this->arena->find($cardId);
+		if($card){
+			$this->arena->pop($card);
+			$this->discard->push($card);
+		}
+		*/
+		$this->moveCard($cardId, $this->arena, $this->discard);
+	}
 
+	private function moveCard($cardId, &$from, &$to){
+		$card = $from->find($cardId);
+		if($card){
+			$from->pop($card);
+			$to->push($card);
+		}
 	}
 }
