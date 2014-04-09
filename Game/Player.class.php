@@ -1,4 +1,5 @@
 <?php
+require_once("DefaultRequires.php");
 require_once("Hand.class.php");
 require_once("Deck.class.php");
 require_once("Discard.class.php");
@@ -11,13 +12,15 @@ class Player {
 	public $discard;
 	public $arena;
 	public $avatar;
+	public $name;
 
-	public function __construct(){
+	public function __construct($parameterMap){
 		$this->deck = new Deck();
 		$this->arena = new Arena();
 		$this->discard = new Discard();
 		$this->hand = new Hand();
 		$this->avatar = new Avatar();
+		$this->name = initWithVar("name", $parameterMap, "Name");
 	}
 
 	//Plays a card from Hand. Applies any effects (eventually)
