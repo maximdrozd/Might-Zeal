@@ -14,17 +14,6 @@ class Game {
 	}
 }
 
-//Class that represents a Playing Field
-class PlayingField {
-	public $environment;
-
-	public function __construct(){
-		$envs = array('desert', 'city', 'forest');
-		shuffle($envs);
-		$this->environment = $envs[0];
-	}
-}
-
 //Class that represents a Player
 class Player {
 	public $deck;
