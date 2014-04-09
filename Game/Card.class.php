@@ -22,7 +22,7 @@ class Card {
 	protected $specialFlags;
 
 	public function __construct($parameterMap){
-		$this->id = rand(0, 10000); //fake, replace with param
+		$this->id = initWithVar("id", $parameterMap, rand(0, 10000)); //fake, replace with param
 		$this->name = initWithVar("name", $parameterMap, "Default Name");
 		$this->description = initWithVar("description", $parameterMap, "Default Description can be rather long");
 		$this->image = initWithVar("image", $parameterMap);

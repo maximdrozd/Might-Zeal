@@ -48,46 +48,18 @@ class Player {
 	}
 
 	public function returnCardToHand($cardId){
-		/*
-		$card = $this->arena->find($cardId);
-		if($card){
-			$this->arena->pop($card);
-			$this->hand->push($card);
-		}
-		*/
 		$this->moveCard($cardId, $this->arena, $this->hand);
 	}
 
 	public function returnCardToDeck($cardId){
-		/*
-		$card = $this->arena->find($cardId);
-		if($card){
-			$this->arena->pop($card);
-			$this->deck->push($card);
-		}
-		*/
 		$this->moveCard($cardId, $this->arena, $this->deck);
 	}
 
 	public function discardCardFromHand($cardId){
-		/*
-		$card = $this->hand->find($cardId);
-		if($card){
-			$this->hand->pop($card);
-			$this->discard->push($card);
-		}
-		*/
 		$this->moveCard($cardId, $this->hand, $this->discard);
 	}
 
 	public function discardCardFromArena($cardId){
-		/*
-		$card = $this->arena->find($cardId);
-		if($card){
-			$this->arena->pop($card);
-			$this->discard->push($card);
-		}
-		*/
 		$this->moveCard($cardId, $this->arena, $this->discard);
 	}
 
