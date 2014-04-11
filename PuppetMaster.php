@@ -13,10 +13,10 @@ $game = new Game();
 
 switch ($com) {
 	case 'testCardMove':
-		$game->players[0]->deck->push(new Card(array("id" => 1)));
-		$game->players[0]->deck->push(new Card(array("id" => 2)));
-		$game->players[0]->deck->push(new Card(array("id" => 3)));
-		$game->players[0]->deck->push(new Card(array("id" => 4)));
+		$game->players[0]->deck->add(new Card(array("id" => 1)));
+		$game->players[0]->deck->add(new Card(array("id" => 2)));
+		$game->players[0]->deck->add(new Card(array("id" => 3)));
+		$game->players[0]->deck->add(new Card(array("id" => 4)));
 		$game->players[0]->drawCard();
 		$game->players[0]->playCard(1);
 		$game->players[0]->returnCardToHand(1);

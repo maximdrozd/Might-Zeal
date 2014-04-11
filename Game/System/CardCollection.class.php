@@ -1,4 +1,5 @@
 <?php
+require_once("GameException.class.php");
 
 class CardCollection {
 	protected $cards;
@@ -14,7 +15,12 @@ class CardCollection {
 
 	public function remove($element){
 		$card = $this->find($element);
-		array_splice($this->cards, array_search($card, $this->cards, true), 1);
+		if($card !== GameException::CARD_NOT_FOUND){
+			array_splice($this->cards, array_search($card, $this->cards, true), 1);
+			return $card;
+		} else {
+			return GameException::CARD_NOT_FOUND;
+		}
 	}
 
 	public function mix(){
@@ -27,7 +33,7 @@ class CardCollection {
 				return $card;
 			}
 		}
-		return null;
+		return GameException::CARD_NOT_FOUND;
 	}
 
 	public function getAll(){

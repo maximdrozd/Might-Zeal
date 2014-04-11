@@ -1,5 +1,6 @@
 <?php
 require_once("System/Config.class.php");
+require_once("System/GameException.class.php");
 require_once("DefaultRequires.php");
 require_once("Hand.class.php");
 require_once("Deck.class.php");
@@ -26,7 +27,7 @@ class Player {
 
 	public function playCard($cardId){
 		$card = $this->hand->find($cardId);
-		if($card && $this->arena->size() < Config::MAX_ARENA_SIZE){
+		if($card !== GameException::CARD_NOT_FOUND && $this->arena->size() < Config::MAX_ARENA_SIZE){
 			$this->hand->remove($card);
 			$this->arena->add($card);
 			//TODO: call card play callback
@@ -35,7 +36,7 @@ class Player {
 
 	public function drawCard(){
 		$card = $this->deck->draw();
-		if($card && $this->hand->size() < Config::MAX_HAND_SIZE){
+		if($card !== GameException::CARD_NOT_FOUND && $this->hand->size() < Config::MAX_HAND_SIZE){
 			$this->hand->add($card);
 		}
 	}
@@ -45,30 +46,32 @@ class Player {
 			$this->discard->remove($card);
 			$this->deck->add($card);
 		}
-		$this->deck->mix();
+		return $this->deck->mix();
 	}
 
 	public function returnCardToHand($cardId){
-		$this->moveCard($cardId, $this->arena, $this->hand);
+		return $this->moveCard($cardId, $this->arena, $this->hand);
 	}
 
 	public function returnCardToDeck($cardId){
-		$this->moveCard($cardId, $this->arena, $this->deck);
+		return $this->moveCard($cardId, $this->arena, $this->deck);
 	}
 
 	public function discardCardFromHand($cardId){
-		$this->moveCard($cardId, $this->hand, $this->discard);
+		return $this->moveCard($cardId, $this->hand, $this->discard);
 	}
 
 	public function discardCardFromArena($cardId){
-		$this->moveCard($cardId, $this->arena, $this->discard);
+		return $this->moveCard($cardId, $this->arena, $this->discard);
 	}
 
 	private function moveCard($cardId, &$from, &$to){
 		$card = $from->find($cardId);
-		if($card){
+		if($card !== GameException::CARD_NOT_FOUND){
 			$from->remove($card);
 			$to->add($card);
+			return GameException::OK;
 		}
+		return GameException::CARD_NOT_FOUND;
 	}
 }
