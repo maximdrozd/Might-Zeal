@@ -7,12 +7,12 @@ class CardCollection {
 		$this->cards = array();
 	}
 
-	public function push($element){
+	public function add($element){
 		array_push($this->cards, $element);
 		return $element;
 	}
 
-	public function pop($element){
+	public function remove($element){
 		$card = $this->find($element);
 		array_splice($this->cards, array_search($card, $this->cards, true), 1);
 	}

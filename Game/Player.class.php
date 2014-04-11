@@ -1,4 +1,5 @@
 <?php
+require_once("System/Config.class.php");
 require_once("DefaultRequires.php");
 require_once("Hand.class.php");
 require_once("Deck.class.php");
@@ -25,24 +26,24 @@ class Player {
 
 	public function playCard($cardId){
 		$card = $this->hand->find($cardId);
-		if($card){
-			$this->hand->pop($card);
-			$this->arena->push($card);
+		if($card && $this->arena->size() < Config::MAX_ARENA_SIZE){
+			$this->hand->remove($card);
+			$this->arena->add($card);
 			//TODO: call card play callback
 		}
 	}
 
 	public function drawCard(){
 		$card = $this->deck->draw();
-		if($card){
-			$this->hand->push($card);
+		if($card && $this->hand->size() < Config::MAX_HAND_SIZE){
+			$this->hand->add($card);
 		}
 	}
 
 	public function reshuffleDeck(){
 		foreach ($this->discard->getAll() as $card) {
-			$this->discard->pop($card);
-			$this->deck->push($card);
+			$this->discard->remove($card);
+			$this->deck->add($card);
 		}
 		$this->deck->mix();
 	}
@@ -66,8 +67,8 @@ class Player {
 	private function moveCard($cardId, &$from, &$to){
 		$card = $from->find($cardId);
 		if($card){
-			$from->pop($card);
-			$to->push($card);
+			$from->remove($card);
+			$to->add($card);
 		}
 	}
 }

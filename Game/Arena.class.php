@@ -1,5 +1,5 @@
 <?php
-require_once("CardCollection.class.php");
+require_once("System/CardCollection.class.php");
 
 class Arena extends CardCollection {
 	public function __construct(){
