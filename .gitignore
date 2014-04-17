@@ -1,2 +1,6 @@
 # exclude some files
 .DS_store
+
+# Vagrant
+.vagrant/
+vagrant/puppet/ssl/
