@@ -5,24 +5,40 @@ ini_set('xdebug.var_display_max_data', -1);
 
 require_once("Game/Game.class.php");
 require_once("Game/Card.class.php");
+require_once("Presenter/CLI.presenter.php");
+require_once("Game/System/Config.class.php");
 
-$com = (isset($argv[1])) ? $argv[1] : "CLI";
-$com = (isset($_REQUEST["com"])) ? $_REQUEST["com"] : $com;
+// $com = (isset($argv[1])) ? $argv[1] : "CLI";
+// $com = (isset($_REQUEST["com"])) ? $_REQUEST["com"] : $com;
 
-$game = new Game();
 
-switch ($com) {
-	case 'testCardMove':
-		$game->players[0]->deck->add(new Card(array("id" => 1)));
-		$game->players[0]->deck->add(new Card(array("id" => 2)));
-		$game->players[0]->deck->add(new Card(array("id" => 3)));
-		$game->players[0]->deck->add(new Card(array("id" => 4)));
-		$game->players[0]->drawCard();
-		$game->players[0]->playCard(1);
-		$game->players[0]->returnCardToHand(1);
-		var_dump($game);
-		break;
-	default:
-		echo "Everything seems OK";
-		break;
+$game = new Game(["MZ","BZ"]);
+$presenter = new CLIPresenter($game);
+
+while(1){
+	$handle = fopen ("php://stdin","r");
+	$com = fgets($handle);
+
+	switch (trim($com)) {
+		case 'init':
+			for ($i=0; $i < Config::MAX_CARD_SET_SIZE * 2; $i++) { 
+				$game->players[floor($i / Config::MAX_CARD_SET_SIZE)]->deck->add(new Card(array("id" => $i)));
+			}
+			//$game->players[0]->drawCard();
+			//$game->players[0]->playCard(1);
+			//$game->players[0]->returnCardToHand(1);
+			//var_dump($game);
+			break;
+		case "draw":
+			$player = $game->currentPlayer();
+			$player->drawCard();
+			$game->advanceCurrentTurn();
+			break;
+		case 'exit':
+			exit(0);
+		default:
+			echo "Everything seems OK";
+			break;
+	}
+	$presenter->render();
 }

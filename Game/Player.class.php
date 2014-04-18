@@ -37,6 +37,7 @@ class Player {
 	public function drawCard(){
 		$card = $this->deck->draw();
 		if($card !== GameException::CARD_NOT_FOUND && $this->hand->size() < Config::MAX_HAND_SIZE){
+			$this->deck->remove($card);
 			$this->hand->add($card);
 		}
 	}

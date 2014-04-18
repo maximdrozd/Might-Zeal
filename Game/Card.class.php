@@ -15,7 +15,7 @@ class Card {
 	protected $rarity;
 	protected $type;
 	protected $subType;
-	protected $cost;
+	public $cost;
 	protected $attack;
 	protected $life;
 	protected $defense;
