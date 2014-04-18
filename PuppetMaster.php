@@ -17,25 +17,31 @@ $presenter = new CLIPresenter($game);
 
 while(1){
 	$handle = fopen ("php://stdin","r");
-	$com = fgets($handle);
+	$comList = explode(" ", trim(fgets($handle)));
 
-	switch (trim($com)) {
+	switch (trim($comList[0])) {
 		case 'init':
+			//TODO: for time being it's ok to randomly generate dummy cards. This will be a database access in future.
 			for ($i=0; $i < Config::MAX_CARD_SET_SIZE * 2; $i++) { 
 				$game->players[floor($i / Config::MAX_CARD_SET_SIZE)]->deck->add(new Card(array("id" => $i)));
 			}
-			//$game->players[0]->drawCard();
-			//$game->players[0]->playCard(1);
-			//$game->players[0]->returnCardToHand(1);
-			//var_dump($game);
 			break;
 		case "draw":
 			$player = $game->currentPlayer();
 			$player->drawCard();
 			$game->advanceCurrentTurn();
 			break;
+		case "play":
+			$player = $game->currentPlayer();
+			$player->playCard(trim($comList[1]));
+			break;
+		case "shuffle":
+			$player = $game->currentPlayer();
+			$player->deck->mix();
+			break;
 		case 'exit':
 			exit(0);
+			break;
 		default:
 			echo "Everything seems OK";
 			break;

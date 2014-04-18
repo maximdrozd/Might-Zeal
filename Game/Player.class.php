@@ -31,6 +31,12 @@ class Player {
 			$this->hand->remove($card);
 			$this->arena->add($card);
 			//TODO: call card play callback
+		} else {
+			if($card === GameException::CARD_NOT_FOUND){
+				//TODO: toast warning for card not found
+			} else {
+				//TODO: toast warning for hand size limit
+			}
 		}
 	}
 
@@ -39,6 +45,12 @@ class Player {
 		if($card !== GameException::CARD_NOT_FOUND && $this->hand->size() < Config::MAX_HAND_SIZE){
 			$this->deck->remove($card);
 			$this->hand->add($card);
+		} else {
+			if($card === GameException::CARD_NOT_FOUND){
+				//TODO: toast warning for card not found
+			} else {
+				//TODO: toast warning for hand size limit
+			}
 		}
 	}
 

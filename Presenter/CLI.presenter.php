@@ -16,7 +16,9 @@ class CLIPresenter {
 		$out =  $this->renderPlayerHand($this->game->players[0], true);
 		$out .= $this->renderPlayerAvatar($this->game->players[0]);
 		$out .= $this->renderPlayerDeck($this->game->players[0]);
+		$out .= $this->renderPlayerArena($this->game->players[0]);
 		$out .= str_pad("", 43, "-")."\n";
+		$out .= $this->renderPlayerArena($this->game->players[1]);
 		$out .= $this->renderPlayerDeck($this->game->players[1]);
 		$out .= $this->renderPlayerAvatar($this->game->players[1]);
 		$out .=  $this->renderPlayerHand($this->game->players[1], false);
@@ -49,8 +51,17 @@ class CLIPresenter {
 			}
 		} else {
 			foreach ($hand->getAll() as $card) {
-				$out .= $card->cost . "|";
+				$out .= $card->id . "|";
 			}
+		}
+		return str_pad($out, 43, " ", STR_PAD_BOTH)."\n";
+	}
+
+	private function renderPlayerArena($player){
+		$out = "";
+		$arena = $player->arena;
+		foreach ($arena->getAll() as $card) {
+			$out .= "{" . $card->id . "}";
 		}
 		return str_pad($out, 43, " ", STR_PAD_BOTH)."\n";
 	}

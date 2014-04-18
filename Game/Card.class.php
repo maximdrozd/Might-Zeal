@@ -5,7 +5,7 @@ require_once("Enum/CardType.enum.php");
 require_once("Enum/HeroClass.enum.php");
 
 class Card {
-	protected $id; //game UNIQUE id
+	public $id; //game UNIQUE id
 	protected $name;
 	protected $description;
 	protected $image;
@@ -42,7 +42,7 @@ class Card {
 	public function match($candidate){
 		if(is_object($candidate) && $this === $candidate){
 			return true;
-		} else if (is_integer($candidate) && $this->id == $candidate){
+		} else if ($this->id == $candidate){
 			return true;
 		} else {
 			return false;
