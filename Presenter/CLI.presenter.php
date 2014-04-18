@@ -48,8 +48,12 @@ class CLIPresenter {
 
 	private function renderPlayerAvatar($player){
 		$avatar = $player->avatar;
+		$turnPrefix = "";
+		if($player == $this->game->currentPlayer()){
+			$turnPrefix = "*";
+		}
 		$out = $this->color->getColoredString("(" . $avatar->currentHP . "/" . $avatar->maxHP . ")", "red", null);
-		$out .= $this->color->getColoredString(str_pad($player->name . " <" . $avatar->getClassName() . ">", 30, " ", STR_PAD_BOTH), $avatar->getClassColor(), null);
+		$out .= $this->color->getColoredString(str_pad($turnPrefix . $player->name . " <" . $avatar->getClassName() . ">", 30, " ", STR_PAD_BOTH), $avatar->getClassColor(), null);
 		$out .= $this->color->getColoredString("(" . $avatar->currentMP . "/" . $avatar->maxMP . ")", "blue", null);
 		return  $out."\n";
 	}

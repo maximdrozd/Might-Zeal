@@ -28,8 +28,9 @@ class Player {
 	public function playCard($cardId){
 		$card = $this->hand->find($cardId);
 		if($card !== GameException::CARD_NOT_FOUND && $this->arena->size() < Config::MAX_ARENA_SIZE){
-			$this->hand->remove($card);
-			$this->arena->add($card);
+			$this->hand->remove($card); //remove card from hand
+			$this->arena->add($card); //move card to arena
+			//TODO: pay the cost of the card
 			//TODO: call card play callback
 		} else {
 			if($card === GameException::CARD_NOT_FOUND){
