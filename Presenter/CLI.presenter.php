@@ -1,18 +1,21 @@
 <?php
 require_once("Utils/Colors.class.php");
+require_once("Game/System/GameException.class.php");
 
 class CLIPresenter {
 
 	protected $game;
 	protected $color;
+	public $autoClear;
 
 	public function __construct($game){
 		$this->game = $game;
 		$this->color = new Colors();
+		$this->autoClear = true;
 	}
 
 	public function render(){
-		echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
+		if($this->autoClear) echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
 		$out =  $this->renderPlayerHand($this->game->players[0], true);
 		$out .= $this->renderPlayerAvatar($this->game->players[0]);
 		$out .= $this->renderPlayerDeck($this->game->players[0]);
@@ -22,6 +25,24 @@ class CLIPresenter {
 		$out .= $this->renderPlayerDeck($this->game->players[1]);
 		$out .= $this->renderPlayerAvatar($this->game->players[1]);
 		$out .=  $this->renderPlayerHand($this->game->players[1], false);
+		echo $out."\n\n";
+	}
+
+	public function describeCard($cardId, $player){
+		$card = $player->arena->find($cardId);
+		$out = "";
+		if($card == GameException::CARD_NOT_FOUND) $card = $player->hand->find($cardId);
+		if($card != GameException::CARD_NOT_FOUND){
+			$out .= "{".$card->cost."}---------------+\n";
+			$out .= " |                |\n";
+			$out .= " |" . str_pad($card->name, 16, " ", STR_PAD_BOTH) . "|\n"; //16
+			$out .= " |" . str_pad($card->id, 16, " ", STR_PAD_BOTH) . "|\n";
+			$out .= " |                |\n";
+			$out .= " |                |\n";
+			$out .= " |                |\n";
+			$out .= " |                |\n";
+			$out .= "(".$card->attack.")--------------[".$card->defense."]\n";
+		}
 		echo $out."\n\n";
 	}
 

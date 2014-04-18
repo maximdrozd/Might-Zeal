@@ -35,6 +35,11 @@ while(1){
 			$player = $game->currentPlayer();
 			$player->playCard(trim($comList[1]));
 			break;
+		case "describe":
+			$player = $game->currentPlayer();
+			$presenter->autoClear = false;
+			$presenter->describeCard(trim($comList[1]), $player);
+			break;
 		case "shuffle":
 			$player = $game->currentPlayer();
 			$player->deck->mix();
@@ -47,4 +52,5 @@ while(1){
 			break;
 	}
 	$presenter->render();
+	$presenter->autoClear = true;
 }

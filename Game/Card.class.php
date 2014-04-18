@@ -6,7 +6,7 @@ require_once("Enum/HeroClass.enum.php");
 
 class Card {
 	public $id; //game UNIQUE id
-	protected $name;
+	public $name;
 	protected $description;
 	protected $image;
 	protected $hero;
@@ -16,9 +16,9 @@ class Card {
 	protected $type;
 	protected $subType;
 	public $cost;
-	protected $attack;
+	public $attack;
 	protected $life;
-	protected $defense;
+	public $defense;
 	protected $specialFlags;
 
 	public function __construct($parameterMap){
@@ -32,10 +32,10 @@ class Card {
 		$this->rarity = initWithVar("rarity", $parameterMap, CardRarity::UNKNOWN);
 		$this->type = initWithVar("type", $parameterMap, CardType::UNKNOWN);
 		$this->subType = initWithVar("subType", $parameterMap);
-		$this->cost = initWithVar("cost", $parameterMap, 0);
-		$this->attack = initWithVar("attack", $parameterMap, 0);
+		$this->cost = initWithVar("cost", $parameterMap, rand(0,10));
+		$this->attack = initWithVar("attack", $parameterMap, rand(1,5));
 		$this->life = initWithVar("life", $parameterMap, 0);
-		$this->defense = initWithVar("defense", $parameterMap, 0);
+		$this->defense = initWithVar("defense", $parameterMap, rand(0,4));
 		$this->specialFlags = initWithVar("specialFlags", $parameterMap);
 	}
 
