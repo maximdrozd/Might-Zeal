@@ -29,20 +29,29 @@ class CLIPresenter {
 	}
 
 	public function describeCard($cardId, $player){
-		$card = $player->arena->find($cardId);
-		$out = "";
-		if($card == GameException::CARD_NOT_FOUND) $card = $player->hand->find($cardId);
-		if($card != GameException::CARD_NOT_FOUND){
-			$out .= "{".$card->cost."}---------------+\n";
-			$out .= " |                |\n";
-			$out .= " |" . str_pad($card->name, 16, " ", STR_PAD_BOTH) . "|\n"; //16
-			$out .= " |" . str_pad($card->id, 16, " ", STR_PAD_BOTH) . "|\n";
-			$out .= " |                |\n";
-			$out .= " |                |\n";
-			$out .= " |                |\n";
-			$out .= " |                |\n";
-			$out .= "(".$card->attack.")--------------[".$card->defense."]\n";
+		// Search for the card in the arena first.
+		try {
+			$card = $player->arena->find($cardId);
+		} catch (CardNotFoundException $e) {
+			// Fall back to the player's hand.
+			try {
+				$card = $player->hand->find($cardId);
+			} catch (CardNotFoundException $e) {
+				echo $e->getMessage();
+				return;
+			}
 		}
+
+		$out = "";
+		$out .= "{".$card->cost."}---------------+\n";
+		$out .= " |                |\n";
+		$out .= " |" . str_pad($card->name, 16, " ", STR_PAD_BOTH) . "|\n"; //16
+		$out .= " |" . str_pad($card->id, 16, " ", STR_PAD_BOTH) . "|\n";
+		$out .= " |                |\n";
+		$out .= " |                |\n";
+		$out .= " |                |\n";
+		$out .= " |                |\n";
+		$out .= "(".$card->attack.")--------------[".$card->defense."]\n";
 		echo $out."\n\n";
 	}
 

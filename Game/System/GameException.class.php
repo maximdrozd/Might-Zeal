@@ -1,6 +1,8 @@
 <?php
 
-class GameException {
-	const CARD_NOT_FOUND = -1;
+class ReturnCodes {
 	const OK = 1;
+}
+
+class CardNotFoundException extends Exception {
 }
