@@ -1,6 +1,8 @@
 <?php
-require_once("Utils/Colors.class.php");
-require_once("Game/System/GameException.class.php");
+namespace Game\Presenters;
+
+use Game\System\Exceptions\CardNotFoundException;
+use Game\Utils\Colors;
 
 class CLIPresenter {
 

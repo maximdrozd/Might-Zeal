@@ -1,16 +1,17 @@
 <?php
+$loader = require __DIR__ . '/vendor/autoload.php';
+
 ini_set('xdebug.var_display_max_depth', -1);
 ini_set('xdebug.var_display_max_children', -1);
 ini_set('xdebug.var_display_max_data', -1);
 
-require_once("Game/Game.class.php");
-require_once("Game/Card.class.php");
-require_once("Presenter/CLI.presenter.php");
-require_once("Game/System/Config.class.php");
-
 // $com = (isset($argv[1])) ? $argv[1] : "CLI";
 // $com = (isset($_REQUEST["com"])) ? $_REQUEST["com"] : $com;
 
+use Game\Models\Card;
+use Game\Models\Game;
+use Game\Presenters\CLIPresenter;
+use Game\System\Config;
 
 $game = new Game(["MZ","BZ"]);
 $presenter = new CLIPresenter($game);

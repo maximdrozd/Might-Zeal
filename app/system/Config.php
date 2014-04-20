@@ -1,4 +1,5 @@
 <?php
+namespace Game\System;
 
 class Config {
 	const MAX_ARENA_SIZE = 7;

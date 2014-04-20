@@ -1,8 +1,9 @@
 <?php
-require_once("DefaultRequires.php");
-require_once("Enum/CardRarity.enum.php");
-require_once("Enum/CardType.enum.php");
-require_once("Enum/HeroClass.enum.php");
+namespace Game\Models;
+
+use Game\Enum\CardRarity;
+use Game\Enum\CardType;
+use Game\Enum\HeroClass;
 
 class Card {
 	public $id; //game UNIQUE id

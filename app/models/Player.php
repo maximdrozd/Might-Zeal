@@ -1,12 +1,8 @@
 <?php
-require_once("System/Config.class.php");
-require_once("System/GameException.class.php");
-require_once("DefaultRequires.php");
-require_once("Hand.class.php");
-require_once("Deck.class.php");
-require_once("Discard.class.php");
-require_once("Arena.class.php");
-require_once("Avatar.class.php");
+namespace Game\Models;
+
+use Game\System\Config;
+use Game\System\Exceptions\CardNotFoundException;
 
 class Player {
 	public $deck;

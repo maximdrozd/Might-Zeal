@@ -1,5 +1,7 @@
 <?php
-require_once("GameException.class.php");
+namespace Game\Models;
+
+use Game\System\Exceptions\CardNotFoundException;
 
 class CardCollection {
 	protected $cards;

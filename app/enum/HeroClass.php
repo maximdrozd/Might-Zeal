@@ -1,4 +1,5 @@
 <?php
+namespace Game\Enum;
 
 class HeroClass {
 	const ANY = 0;
