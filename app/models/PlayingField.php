@@ -1,6 +1,7 @@
 <?php
-require_once("DefaultRequires.php");
-require_once("Enum/EnvironmentType.enum.php");
+namespace Game\Models;
+
+use Game\Enum\EnvironmentType;
 
 class PlayingField {
 	protected $environment;

@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Game\\": "app/"
+    },
+    "files": ["app/utils/initWithVar.php"]
+  }
+}

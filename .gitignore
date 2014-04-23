@@ -4,3 +4,7 @@
 # Vagrant
 .vagrant/
 vagrant/puppet/ssl/
+
+# Composer
+composer.phar
+vendor/

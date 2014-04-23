@@ -1,5 +1,7 @@
 <?php
-require_once("Enum/HeroClass.enum.php");
+namespace Game\Models;
+
+use Game\Enum\HeroClass;
 
 class Avatar {
 	public $currentHP;

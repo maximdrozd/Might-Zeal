@@ -1,12 +1,8 @@
 <?php
-require_once("System/Config.class.php");
-require_once("System/GameException.class.php");
-require_once("DefaultRequires.php");
-require_once("Hand.class.php");
-require_once("Deck.class.php");
-require_once("Discard.class.php");
-require_once("Arena.class.php");
-require_once("Avatar.class.php");
+namespace Game\Models;
+
+use Game\System\Config;
+use Game\System\Exceptions\CardNotFoundException;
 
 class Player {
 	public $deck;
@@ -26,32 +22,29 @@ class Player {
 	}
 
 	public function playCard($cardId){
-		$card = $this->hand->find($cardId);
-		if($card !== GameException::CARD_NOT_FOUND && $this->arena->size() < Config::MAX_ARENA_SIZE){
-			$this->hand->remove($card); //remove card from hand
-			$this->arena->add($card); //move card to arena
-			//TODO: pay the cost of the card
-			//TODO: call card play callback
-		} else {
-			if($card === GameException::CARD_NOT_FOUND){
-				//TODO: toast warning for card not found
+		try {
+			$card = $this->hand->find($cardId);
+			if ($this->arena->size() < Config::MAX_ARENA_SIZE) {
+				$this->hand->remove($card); //remove card from hand
+				$this->arena->add($card); //move card to arena
+				//TODO: pay the cost of the card
+				//TODO: call card play callback
 			} else {
 				//TODO: toast warning for hand size limit
 			}
+		} catch (CardNotFoundException $e) {
+			//TODO: toast warning for card not found
+			echo $e->getMessage();
 		}
 	}
 
 	public function drawCard(){
 		$card = $this->deck->draw();
-		if($card !== GameException::CARD_NOT_FOUND && $this->hand->size() < Config::MAX_HAND_SIZE){
+		if (is_object($card) && $this->hand->size() < Config::MAX_HAND_SIZE) {
 			$this->deck->remove($card);
 			$this->hand->add($card);
 		} else {
-			if($card === GameException::CARD_NOT_FOUND){
-				//TODO: toast warning for card not found
-			} else {
-				//TODO: toast warning for hand size limit
-			}
+			//TODO: toast warning for hand size limit
 		}
 	}
 
@@ -80,12 +73,13 @@ class Player {
 	}
 
 	private function moveCard($cardId, &$from, &$to){
-		$card = $from->find($cardId);
-		if($card !== GameException::CARD_NOT_FOUND){
+		try {
+			$card = $from->find($cardId);
 			$from->remove($card);
 			$to->add($card);
-			return GameException::OK;
+		} catch (CardNotFoundException $e) {
+			// TODO: toast warning for card not found
 		}
-		return GameException::CARD_NOT_FOUND;
+		return ReturnCodes::OK;
 	}
 }

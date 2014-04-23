@@ -1,6 +1,5 @@
 <?php
-require_once("Player.class.php");
-require_once("PlayingField.class.php");
+namespace Game\Models;
 
 class Game {
 	public $playingField;

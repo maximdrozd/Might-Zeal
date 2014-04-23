@@ -1,4 +1,5 @@
 <?php
+namespace Game\Enum;
 
 class CardRarity {
 	const UNKNOWN = 0;

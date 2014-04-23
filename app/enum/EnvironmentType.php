@@ -1,4 +1,5 @@
 <?php
+namespace Game\Enum;
 
 class EnvironmentType {
 	const UNKNOWN = 0;

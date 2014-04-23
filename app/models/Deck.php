@@ -1,5 +1,5 @@
 <?php
-require_once("System/CardCollection.class.php");
+namespace Game\Models;
 
 class Deck extends CardCollection {
 	public function __construct(){

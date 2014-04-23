@@ -1,4 +1,5 @@
 <?php
+namespace Game\Enum;
 
 class CardType {
 	const UNKNOWN = 0;

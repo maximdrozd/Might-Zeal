@@ -1,5 +1,7 @@
 <?php
-require_once("GameException.class.php");
+namespace Game\Models;
+
+use Game\System\Exceptions\CardNotFoundException;
 
 class CardCollection {
 	protected $cards;
@@ -14,12 +16,13 @@ class CardCollection {
 	}
 
 	public function remove($element){
-		$card = $this->find($element);
-		if($card !== GameException::CARD_NOT_FOUND){
+		try {
+			$card = $this->find($element);
 			array_splice($this->cards, array_search($card, $this->cards, true), 1);
 			return $card;
-		} else {
-			return GameException::CARD_NOT_FOUND;
+		} catch (CardNotFoundException $e) {
+			// Re-raise the exception.
+			throw new CardNotFoundException("Cannot find card with id: " . $element . "\n");
 		}
 	}
 
@@ -33,7 +36,7 @@ class CardCollection {
 				return $card;
 			}
 		}
-		return GameException::CARD_NOT_FOUND;
+		throw new CardNotFoundException("Cannot find card with id: " . $element . "\n");
 	}
 
 	public function getAll(){
