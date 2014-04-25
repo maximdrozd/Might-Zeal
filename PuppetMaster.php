@@ -1,3 +1,4 @@
+
 <?php
 $loader = require __DIR__ . '/vendor/autoload.php';
 
@@ -17,6 +18,10 @@ $game = new Game(["MZ","BZ"]);
 $presenter = new CLIPresenter($game);
 
 while(1){
+	if(PHP_SAPI != "cli") {
+		echo "For now this is only runable from command line";
+		exit();
+	}
 	$handle = fopen ("php://stdin","r");
 	$comList = explode(" ", trim(fgets($handle)));
 
