@@ -1,0 +1,3685 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Might Zeal API documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .parent {
+            color: #999;
+        }
+        .list-group-item > .badge {
+            float: none;
+            margin-right: 6px;
+        }
+        .panel-title > .block > .badge {
+            float: right;
+            margin-left: 5px;
+        }
+        .badge {
+            border-radius: 0;
+            text-transform: uppercase;
+            width: 60px;
+            font-weight: normal;
+            color: #f3f3f6;
+            line-height: normal;
+        }
+        .block .badge {
+            visibility: hidden;
+        }
+        .block.collapsed .badge {
+            visibility: visible;
+        }
+        .badge_get {
+            background-color: #63a8e2;
+        }
+        .badge_post {
+            background-color: #6cbd7d;
+        }
+        .badge_put {
+            background-color: #22bac4;
+        }
+        .badge_delete {
+            background-color: #d26460;
+        }
+        .block {
+            display: block;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
+        .panel-group .panel+.panel-white {
+            margin-top: 0;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+            border-radius: 0;
+        }
+        .panel-white:last-child {
+            border-bottom-color: white;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        .panel-white .panel-heading {
+            background: white;
+        }
+        .tab-pane ul {
+            padding-left: 2em;
+        }
+        .tab-pane h2 {
+            font-size: 1.2em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-pane h3 {
+            font-size: 1.1em;
+        }
+        .tab-content {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+        #sidebar {
+            margin-top: 30px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #ddd;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target="#sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9" role="main">
+                <div class="page-header">
+                    <h1>Might Zeal API documentation</h1>
+                    <p></p>
+
+                    
+                        <h3>Overview</h3>
+                        <p>This document describes the Might Zeal public API.</p>
+<p>Unique resources within a global collection (e.g., a single game) are identified by an <code>id</code>. This <code>id</code> is used to construct the resource URI. As an example, a unique game would be accessed using <code>/games/gameId</code>.</p>
+<p>Resources with an implied order (e.g., turns, or cards in a deck) are identified by a <code>number</code> instead. In this case, the URI would look like <code>/resources/resourceNumber</code>.</p>
+
+                    
+                </div>
+
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_games" class="panel-title">/games</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent"></span>/games
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List all games
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_games_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Create a new game
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/games
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List all games</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games_get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_games_get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_games_get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>A paginated list of all games</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_games_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent"></span>/games
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Create a new game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games_post_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_games_post_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games_post_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_games_post_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>The game was created.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games__gameId_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <span class="parent">/games</span>/{gameId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games__gameId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a single game
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        Delete a game
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games__gameId__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/games</span>/{gameId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a single game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_games__gameId__get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_games__gameId__get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>An object describing the game</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_games__gameId__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent">/games</span>/{gameId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Delete a game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__delete_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_games__gameId__delete_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_games__gameId__delete_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The game was deleted.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games__gameId__turns">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent">/games/{gameId}</span>/turns
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games__gameId__turns" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__turns_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List all turns taken during the game
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__turns_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Make changes and advance the game by one turn
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games__gameId__turns_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/games/{gameId}</span>/turns
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List all turns taken during the game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__turns_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__turns_get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_games__gameId__turns_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent">/games/{gameId}</span>/turns
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Make changes and advance the game by one turn</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__turns_post_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__turns_post_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games__gameId__turns__turnNumber_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/games/{gameId}/turns</span>/{turnNumber}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games__gameId__turns__turnNumber_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__turns__turnNumber__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a specific turn
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games__gameId__turns__turnNumber__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/games/{gameId}/turns</span>/{turnNumber}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a specific turn</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__turns__turnNumber__get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__turns__turnNumber__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                            <li><strong>turnNumber</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games__gameId__users">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent">/games/{gameId}</span>/users
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games__gameId__users" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__users_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List all players in the game
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__users_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Join a game
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games__gameId__users_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/games/{gameId}</span>/users
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List all players in the game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__users_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__users_get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_games__gameId__users_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent">/games/{gameId}</span>/users
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Join a game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__users_post_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__users_post_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games__gameId__users__userId_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <span class="parent">/games/{gameId}/users</span>/{userId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games__gameId__users__userId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__users__userId__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a single player
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__users__userId__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        Leave a game
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games__gameId__users__userId__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/games/{gameId}/users</span>/{userId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a single player</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__users__userId__get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__users__userId__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                            <li><strong>userId</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_games__gameId__users__userId__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent">/games/{gameId}/users</span>/{userId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Leave a game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__users__userId__delete_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__users__userId__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                            <li><strong>userId</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games__gameId__cards">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/games/{gameId}</span>/cards
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games__gameId__cards" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__cards_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List cards in the game
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games__gameId__cards_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/games/{gameId}</span>/cards
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List cards in the game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__cards_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__cards_get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+                                    <h3>Query Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>location</strong>
+                                                <em>
+                                                    
+                                                    
+                                                      (string)
+                                                    
+                                                </em>
+
+                                                <p>area of gameplay (<code>arena</code>, <code>deck</code>, <code>hand</code>, <code>discards</code>, etc.)</p>
+
+
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>user</strong>
+                                                <em>
+                                                    
+                                                    
+                                                      (integer)
+                                                    
+                                                </em>
+
+                                                <p>owner of card (<code>userId</code>)</p>
+
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games__gameId__cards__cardNumber_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_patch">patch</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <span class="parent">/games/{gameId}/cards</span>/{cardNumber}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games__gameId__cards__cardNumber_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__cards__cardNumber__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a single card in play
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__cards__cardNumber__patch" class="list-group-item">
+                        <span class="badge badge_patch">patch</span>
+                        Modify a card in play (e.g., buff)
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__cards__cardNumber__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        Remove a card from play
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games__gameId__cards__cardNumber__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/games/{gameId}/cards</span>/{cardNumber}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a single card in play</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__cards__cardNumber__get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__cards__cardNumber__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                            <li><strong>cardNumber</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_games__gameId__cards__cardNumber__patch">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_patch">patch</span>
+                            <span class="parent">/games/{gameId}/cards</span>/{cardNumber}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Modify a card in play (e.g., buff)</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__cards__cardNumber__patch_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__cards__cardNumber__patch_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                            <li><strong>cardNumber</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_games__gameId__cards__cardNumber__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent">/games/{gameId}/cards</span>/{cardNumber}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Remove a card from play</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__cards__cardNumber__delete_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__cards__cardNumber__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                            <li><strong>cardNumber</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__games__gameId__cards_actions">
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent">/games/{gameId}/cards</span>/actions
+            </a>
+        </h4>
+    </div>
+    <div id="panel__games__gameId__cards_actions" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_games__gameId__cards_actions_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Use for actions that do not map to HTTP verbs (e.g., shuffle)
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_games__gameId__cards_actions_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent">/games/{gameId}/cards</span>/actions
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Use for actions that do not map to HTTP verbs (e.g., shuffle)</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_games__gameId__cards_actions_post_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_games__gameId__cards_actions_post_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>gameId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_users" class="panel-title">/users</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__users">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent"></span>/users
+            </a>
+        </h4>
+    </div>
+    <div id="panel__users" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_users_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List all users
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_users_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/users
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List all users</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_users_get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_users_get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_users_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_users_get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>A paginated list of all users</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/users</span>/{userId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__users__userId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_users__userId__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a single user
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_users__userId__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/users</span>/{userId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a single user</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_users__userId__get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_users__userId__get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_users__userId__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>userId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_users__userId__get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>An object describing the user</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId__cards">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/users/{userId}</span>/cards
+            </a>
+        </h4>
+    </div>
+    <div id="panel__users__userId__cards" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_users__userId__cards_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List a user&#x27;s cards
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_users__userId__cards_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/users/{userId}</span>/cards
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List a user&#39;s cards</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_users__userId__cards_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_users__userId__cards_get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>userId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId__decks">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/users/{userId}</span>/decks
+            </a>
+        </h4>
+    </div>
+    <div id="panel__users__userId__decks" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_users__userId__decks_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List a user&#x27;s decks
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_users__userId__decks_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/users/{userId}</span>/decks
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List a user&#39;s decks</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_users__userId__decks_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_users__userId__decks_get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>userId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId__decks__deck_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/users/{userId}/decks</span>/{deck}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__users__userId__decks__deck_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_users__userId__decks__deck__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a specific deck from a user&#x27;s collection
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_users__userId__decks__deck__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/users/{userId}/decks</span>/{deck}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a specific deck from a user&#39;s collection</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_users__userId__decks__deck__get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_users__userId__decks__deck__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>userId</strong>: integer</li>
+                                        
+                                            <li><strong>deck</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__users__userId__games">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/users/{userId}</span>/games
+            </a>
+        </h4>
+    </div>
+    <div id="panel__users__userId__games" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_users__userId__games_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a user&#x27;s game history
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_users__userId__games_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/users/{userId}</span>/games
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a user&#39;s game history</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_users__userId__games_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_users__userId__games_get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>userId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_user" class="panel-title">/user</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+                                <div class="resource-description">
+                                    <p>The <code>/user</code> endpoint is a shortcut to <code>/users/{userId}</code>, where <code>userId</code> is the unique ID of the currently authenticated user (&quot;current user&quot;). This is a convenient way to access subresources like cards and decks.</p>
+
+                                </div>
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_patch">patch</span>
+                
+                <span class="parent"></span>/user
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get the current user
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_patch" class="list-group-item">
+                        <span class="badge badge_patch">patch</span>
+                        Update the current user
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/user
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get the current user</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_user_patch">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_patch">patch</span>
+                            <span class="parent"></span>/user
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Update the current user</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_patch_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_user_patch_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_patch_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_user_patch_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The current user was updated.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user_cards">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent">/user</span>/cards
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user_cards" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_cards_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List the current user&#x27;s cards
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_cards_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Add a card to the current user&#x27;s collection
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_cards_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/user</span>/cards
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List the current user&#39;s cards</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_cards_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_cards_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_user_cards_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent">/user</span>/cards
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Add a card to the current user&#39;s collection</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_cards_post_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_user_cards_post_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_cards_post_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_user_cards_post_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The card was added to the user&#39;s collection.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user_cards__cardId_">
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <span class="parent">/user/cards</span>/{cardId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user_cards__cardId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_cards__cardId__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        Remove a card from the current user&#x27;s collection
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_cards__cardId__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent">/user/cards</span>/{cardId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Remove a card from the current user&#39;s collection</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_cards__cardId__delete_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_user_cards__cardId__delete_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_cards__cardId__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>cardId</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_user_cards__cardId__delete_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The card was deleted from the user&#39;s collection.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user_decks">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent">/user</span>/decks
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user_decks" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_decks_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List the current user&#x27;s decks
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_decks_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Add a deck to the user&#x27;s collection
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_decks_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/user</span>/decks
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List the current user&#39;s decks</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_decks_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_decks_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_user_decks_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent">/user</span>/decks
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Add a deck to the user&#39;s collection</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_decks_post_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_decks_post_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user_decks__deckId_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_patch">patch</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <span class="parent">/user/decks</span>/{deckId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user_decks__deckId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_decks__deckId__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a specific card from the current user&#x27;s collection
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_decks__deckId__patch" class="list-group-item">
+                        <span class="badge badge_patch">patch</span>
+                        Update a deck in the current user&#x27;s collection
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_decks__deckId__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        Remove a deck from the current user&#x27;s collection
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_decks__deckId__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/user/decks</span>/{deckId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a specific card from the current user&#39;s collection</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_decks__deckId__get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_decks__deckId__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_user_decks__deckId__patch">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_patch">patch</span>
+                            <span class="parent">/user/decks</span>/{deckId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Update a deck in the current user&#39;s collection</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_decks__deckId__patch_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_decks__deckId__patch_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_user_decks__deckId__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent">/user/decks</span>/{deckId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Remove a deck from the current user&#39;s collection</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_decks__deckId__delete_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_decks__deckId__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user_decks__deckId__cards">
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent">/user/decks/{deckId}</span>/cards
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user_decks__deckId__cards" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_decks__deckId__cards_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Add a card to a deck
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_decks__deckId__cards_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent">/user/decks/{deckId}</span>/cards
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Add a card to a deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_decks__deckId__cards_post_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_user_decks__deckId__cards_post_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_decks__deckId__cards_post_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_user_decks__deckId__cards_post_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user_decks__deckId__cards__cardNumber_">
+                
+                    <span class="badge badge_put">put</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <span class="parent">/user/decks/{deckId}/cards</span>/{cardNumber}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user_decks__deckId__cards__cardNumber_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_decks__deckId__cards__cardNumber__put" class="list-group-item">
+                        <span class="badge badge_put">put</span>
+                        Add or replace a card in a deck
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_decks__deckId__cards__cardNumber__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        Remove a card from a deck
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_decks__deckId__cards__cardNumber__put">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_put">put</span>
+                            <span class="parent">/user/decks/{deckId}/cards</span>/{cardNumber}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Add or replace a card in a deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_decks__deckId__cards__cardNumber__put_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_user_decks__deckId__cards__cardNumber__put_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_decks__deckId__cards__cardNumber__put_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: string</li>
+                                        
+                                            <li><strong>cardNumber</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_user_decks__deckId__cards__cardNumber__put_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The card was replaced.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_user_decks__deckId__cards__cardNumber__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent">/user/decks/{deckId}/cards</span>/{cardNumber}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Remove a card from a deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_decks__deckId__cards__cardNumber__delete_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_user_decks__deckId__cards__cardNumber__delete_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_decks__deckId__cards__cardNumber__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: string</li>
+                                        
+                                            <li><strong>cardNumber</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_user_decks__deckId__cards__cardNumber__delete_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The card was removed.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user_games">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/user</span>/games
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user_games" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_games_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get the current user&#x27;s game history
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_games_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/user</span>/games
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get the current user&#39;s game history</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_games_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_games_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__user_game">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/user</span>/game
+            </a>
+        </h4>
+    </div>
+    <div id="panel__user_game" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_user_game_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get the currently active game
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_user_game_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/user</span>/game
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get the currently active game</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_user_game_get_request" data-toggle="tab">Request</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_user_game_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_decks" class="panel-title">/decks</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+                                <div class="resource-description">
+                                    <p>Decks are collections of exactly 30 cards, and are owned by a specific user. Standard decks are not owned by any user.</p>
+
+                                </div>
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__decks">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent"></span>/decks
+            </a>
+        </h4>
+    </div>
+    <div id="panel__decks" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_decks_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List all decks
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_decks_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Create a new deck
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_decks_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/decks
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List all decks</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_decks_get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_decks_get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_decks_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_decks_get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>A paginated list of all decks</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_decks_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent"></span>/decks
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Create a new deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_decks_post_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_decks_post_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_decks_post_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_decks_post_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>The deck was created.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__decks__deckId_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <span class="parent">/decks</span>/{deckId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__decks__deckId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_decks__deckId__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a single deck
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_decks__deckId__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        Delete a deck
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_decks__deckId__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/decks</span>/{deckId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a single deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_decks__deckId__get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_decks__deckId__get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_decks__deckId__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_decks__deckId__get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>An object describing the deck</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_decks__deckId__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent">/decks</span>/{deckId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Delete a deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_decks__deckId__delete_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_decks__deckId__delete_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_decks__deckId__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_decks__deckId__delete_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The deck was deleted.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__decks__deckId__cards">
+                
+                    <span class="badge badge_post">post</span>
+                
+                <span class="parent">/decks/{deckId}</span>/cards
+            </a>
+        </h4>
+    </div>
+    <div id="panel__decks__deckId__cards" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_decks__deckId__cards_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        Add a card to a deck
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_decks__deckId__cards_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent">/decks/{deckId}</span>/cards
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Add a card to a deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_decks__deckId__cards_post_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_decks__deckId__cards_post_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_decks__deckId__cards_post_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_decks__deckId__cards_post_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__decks__deckId__cards__cardNumber_">
+                
+                    <span class="badge badge_put">put</span>
+                
+                    <span class="badge badge_delete">delete</span>
+                
+                <span class="parent">/decks/{deckId}/cards</span>/{cardNumber}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__decks__deckId__cards__cardNumber_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_decks__deckId__cards__cardNumber__put" class="list-group-item">
+                        <span class="badge badge_put">put</span>
+                        Add or replace a card in a deck
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_decks__deckId__cards__cardNumber__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        Remove a card from a deck
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_decks__deckId__cards__cardNumber__put">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_put">put</span>
+                            <span class="parent">/decks/{deckId}/cards</span>/{cardNumber}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Add or replace a card in a deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_decks__deckId__cards__cardNumber__put_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_decks__deckId__cards__cardNumber__put_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_decks__deckId__cards__cardNumber__put_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: integer</li>
+                                        
+                                            <li><strong>cardNumber</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_decks__deckId__cards__cardNumber__put_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The card was replaced.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="_decks__deckId__cards__cardNumber__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent">/decks/{deckId}/cards</span>/{cardNumber}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Remove a card from a deck</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_decks__deckId__cards__cardNumber__delete_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_decks__deckId__cards__cardNumber__delete_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_decks__deckId__cards__cardNumber__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>deckId</strong>: integer</li>
+                                        
+                                            <li><strong>cardNumber</strong>: string</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_decks__deckId__cards__cardNumber__delete_response">
+                                    
+                                        <h2>HTTP status code 204</h2>
+                                        <p>The card was removed.</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_cards" class="panel-title">/cards</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+                                <div class="resource-description">
+                                    <p>Cards are general resources, and do not belong to a particular user.</p>
+
+                                </div>
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__cards">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent"></span>/cards
+            </a>
+        </h4>
+    </div>
+    <div id="panel__cards" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_cards_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List all cards
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_cards_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/cards
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List all cards</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_cards_get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_cards_get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_cards_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_cards_get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>A paginated list of all cards</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__cards__cardId_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/cards</span>/{cardId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__cards__cardId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_cards__cardId__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a single card
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_cards__cardId__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/cards</span>/{cardId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a single card</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_cards__cardId__get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_cards__cardId__get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_cards__cardId__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>cardId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_cards__cardId__get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>An object describing the card</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_heroes" class="panel-title">/heroes</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__heroes">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent"></span>/heroes
+            </a>
+        </h4>
+    </div>
+    <div id="panel__heroes" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_heroes_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        List all heroes
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_heroes_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/heroes
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>List all heroes</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_heroes_get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_heroes_get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_heroes_get_request">
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_heroes_get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>A paginated list of all heroes</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+    <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__heroes__heroId_">
+                
+                    <span class="badge badge_get">get</span>
+                
+                <span class="parent">/heroes</span>/{heroId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__heroes__heroId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_heroes__heroId__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        Get a single hero
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" id="_heroes__heroId__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent">/heroes</span>/{heroId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get a single hero</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#_heroes__heroId__get_request" data-toggle="tab">Request</a></li>
+                            
+                                <li><a href="#_heroes__heroId__get_response" data-toggle="tab">Response</a></li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_heroes__heroId__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li><strong>heroId</strong>: integer</li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_heroes__heroId__get_response">
+                                    
+                                        <h2>HTTP status code 200</h2>
+                                        <p>An object describing the hero</p>
+
+
+                                        
+
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+
+            <div class="col-md-3">
+                <div id="sidebar" class="hidden-print affix" role="complementary">
+                    <ul class="nav nav-pills nav-stacked">
+                        
+                            <li><a href="#_games">/games</a></li>
+                        
+                            <li><a href="#_users">/users</a></li>
+                        
+                            <li><a href="#_user">/user</a></li>
+                        
+                            <li><a href="#_decks">/decks</a></li>
+                        
+                            <li><a href="#_cards">/cards</a></li>
+                        
+                            <li><a href="#_heroes">/heroes</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
