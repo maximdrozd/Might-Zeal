@@ -97,7 +97,11 @@ class CLIPresenter {
 		$out = "";
 		$arena = $player->arena;
 		foreach ($arena->getAll() as $card) {
-			$out .= "{" . $card->id . "}";
+			if($card->canAttack){
+				$out .= "{" . $card->id . "}";
+			} else {
+				$out .= "/" . $card->id . "/";
+			}
 		}
 		return str_pad($out, 43, " ", STR_PAD_BOTH)."\n";
 	}

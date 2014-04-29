@@ -29,12 +29,12 @@ while(1){
 		case 'init':
 			//TODO: for time being it's ok to randomly generate dummy cards. This will be a database access in future.
 			for ($i=0; $i < Config::MAX_CARD_SET_SIZE * 2; $i++) { 
-				$game->players[floor($i / Config::MAX_CARD_SET_SIZE)]->deck->add(new Card(array("id" => $i)));
+				$player = $game->players[floor($i / Config::MAX_CARD_SET_SIZE)];
+				$player->deck->add(new Card(array("id" => $i)));
+				$player->deck->mix();
 			}
 			break;
-		case "draw":
-			$player = $game->currentPlayer();
-			$player->drawCard();
+		case "endTurn":
 			$game->advanceCurrentTurn();
 			break;
 		case "play":
@@ -45,10 +45,6 @@ while(1){
 			$player = $game->currentPlayer();
 			$presenter->autoClear = false;
 			$presenter->describeCard(trim($comList[1]), $player);
-			break;
-		case "shuffle":
-			$player = $game->currentPlayer();
-			$player->deck->mix();
 			break;
 		case 'exit':
 			exit(0);

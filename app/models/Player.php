@@ -21,6 +21,12 @@ class Player {
 		$this->name = initWithVar("name", $parameterMap, "Name");
 	}
 
+	public function triggerTurnStart(){
+		$this->avatar->triggerTurnStart();
+		$this->drawCard();
+		$this->arena->triggerTurnStart();
+	}
+
 	public function playCard($cardId){
 		try {
 			$card = $this->hand->find($cardId);

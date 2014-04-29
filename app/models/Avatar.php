@@ -12,14 +12,6 @@ class Avatar {
 	private $classNamesAndColors;
 
 	public function __construct(){
-		$classes = array(HeroClass::MAGE, HeroClass::PRIEST, HeroClass::WARLOCK, HeroClass::DRUID, HeroClass::ROGUE, HeroClass::MONK,
-			HeroClass::SHAMAN, HeroClass::HUNTER, HeroClass::DEATHKNIGHT, HeroClass::PALADIN, HeroClass::WARRIOR);
-		shuffle($classes);
-		$this->maxHP = rand(22,30);
-		$this->currentHP = $this->maxHP;
-		$this->maxMP = rand(8,10);
-		$this->currentMP = 0;
-		$this->class = $classes[0];
 		$this->classNamesAndColors = array(
 			HeroClass::MAGE => ["Magic Man", "cyan"], 
 			HeroClass::PRIEST => ["Holy Dude", "white"], 
@@ -33,6 +25,13 @@ class Avatar {
 			HeroClass::PALADIN => ["Church Fanatic", "light_purple"], 
 			HeroClass::WARRIOR => ["Hard Head", "dark_gray"]
 		);
+		$classes = array_keys($this->classNamesAndColors);
+		shuffle($classes);
+		$this->maxHP = rand(22,30);
+		$this->currentHP = $this->maxHP;
+		$this->maxMP = rand(8,10);
+		$this->currentMP = 0;
+		$this->class = $classes[0];
 	}
 
 	public function getClassName(){
@@ -41,5 +40,10 @@ class Avatar {
 
 	public function getClassColor(){
 		return $this->classNamesAndColors[$this->class][1];
+	}
+
+	public function triggerTurnStart(){
+		$this->currentMP++;
+		$this->currentMP = min($this->currentMP, $this->maxMP);
 	}
 }

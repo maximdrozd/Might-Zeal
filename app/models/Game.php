@@ -23,6 +23,8 @@ class Game {
 		if($this->currentTurn >= count($this->players)){
 			$this->currentTurn = 0;
 		}
+		$player = $this->currentPlayer();
+		$player->triggerTurnStart();
 	}
 
 	public function currentPlayer(){
