@@ -21,7 +21,7 @@ class Card {
 	protected $life;
 	public $defense;
 	protected $specialFlags;
-	public $canAttack;
+	public $canAct;
 
 	public function __construct($parameterMap){
 		$this->id = initWithVar("id", $parameterMap, rand(0, 10000)); //fake, replace with param
@@ -39,7 +39,7 @@ class Card {
 		$this->life = initWithVar("life", $parameterMap, 0);
 		$this->defense = initWithVar("defense", $parameterMap, rand(0,4));
 		$this->specialFlags = initWithVar("specialFlags", $parameterMap);
-		$this->canAttack = false;
+		$this->canAct = false;
 	}
 
 	public function match($candidate){

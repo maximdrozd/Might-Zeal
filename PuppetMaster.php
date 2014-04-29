@@ -5,6 +5,7 @@ $loader = require __DIR__ . '/vendor/autoload.php';
 ini_set('xdebug.var_display_max_depth', -1);
 ini_set('xdebug.var_display_max_children', -1);
 ini_set('xdebug.var_display_max_data', -1);
+date_default_timezone_set("America/Toronto");
 
 // $com = (isset($argv[1])) ? $argv[1] : "CLI";
 // $com = (isset($_REQUEST["com"])) ? $_REQUEST["com"] : $com;
@@ -46,7 +47,16 @@ while(1){
 			$presenter->autoClear = false;
 			$presenter->describeCard(trim($comList[1]), $player);
 			break;
-		case 'exit':
+		case "token":
+			$presenter->autoClear = false;
+			echo $game->currentPlayer()->token;
+			break;
+		case "player":
+			$player = $game->getPlayerByToken($comList[1]);
+			$presenter->autoClear = false;
+			var_dump($player);
+			break;
+		case "exit":
 			exit(0);
 			break;
 		default:

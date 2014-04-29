@@ -8,7 +8,7 @@ class Arena extends CardCollection {
 
 	public function triggerTurnStart(){
 		foreach ($this->cards as $card) {
-			$card->canAttack = true;
+			$card->canAct = true;
 		}
 	}
 }

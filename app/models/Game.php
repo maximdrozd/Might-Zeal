@@ -30,4 +30,36 @@ class Game {
 	public function currentPlayer(){
 		return $this->players[$this->currentTurn];
 	}
+
+	public function getEnemiesForPlayer($player){
+		$enemies = array();
+		foreach ($this->players as $potentialEnemy) {
+			if($player !== $potentialEnemy){
+				$enemies[] = $potentialEnemy;
+			}
+		}
+		return $enemies;
+	}
+
+	//this is dumb auth. Each player keeps own token 
+	//and this is how they can get their player object.
+	//this should be for internal use by PuppetMaster
+	public function getPlayerByToken($token){
+		foreach ($this->players as $player) {
+			if($player->token == $token){
+				return $player;
+			}
+		}
+		return null;
+	}
+
+	public function activateCard($player, $cardId, $target){
+		if($player === $this->currentPlayer()){ // legal thing to do, play on your turn
+			$card = $player->arena->find($card);
+			if($card){
+				//apply card effects here
+				$card->canAct = false;
+			}
+		}
+	}
 }

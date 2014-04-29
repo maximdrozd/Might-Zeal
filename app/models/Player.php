@@ -3,6 +3,7 @@ namespace Game\Models;
 
 use Game\System\Config;
 use Game\System\Exceptions\CardNotFoundException;
+use Game\Utils\Tokenizer;
 
 class Player {
 	public $deck;
@@ -11,6 +12,7 @@ class Player {
 	public $arena;
 	public $avatar;
 	public $name;
+	public $token;
 
 	public function __construct($parameterMap){
 		$this->deck = new Deck();
@@ -19,6 +21,7 @@ class Player {
 		$this->hand = new Hand();
 		$this->avatar = new Avatar();
 		$this->name = initWithVar("name", $parameterMap, "Name");
+		$this->token = Tokenizer::generateToken();
 	}
 
 	public function triggerTurnStart(){
