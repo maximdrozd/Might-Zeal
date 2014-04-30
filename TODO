@@ -1,0 +1,10 @@
+The BIG TODO list
+
+* Plan database structure
+* Add database access layer
+* Change constructors to get data from static tables in storage
+* Investigate loging solution
+* Create a Game History model
+* Arrange for artwork with Danielle
+* Add History model to Game
+* Add Card Flags model to Game

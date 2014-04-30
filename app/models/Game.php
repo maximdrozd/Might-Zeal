@@ -58,6 +58,7 @@ class Game {
 			$card = $player->arena->find($card);
 			if($card){
 				//apply card effects here
+				//TODO: do something with target
 				$card->canAct = false;
 			}
 		}
