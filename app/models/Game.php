@@ -5,9 +5,11 @@ class Game {
 	public $playingField;
 	public $players;
 	protected $currentTurn;
+	public $history;
 
 	public function __construct($players){
 		$this->playingField = new PlayingField(null);
+		$this->history = new History();
 		foreach ($players as $player) {
 			$this->players[] = new Player(array("name" => $player));
 		}
@@ -55,12 +57,13 @@ class Game {
 
 	public function activateCard($player, $cardId, $target){
 		if($player === $this->currentPlayer()){ // legal thing to do, play on your turn
-			$card = $player->arena->find($card);
-			if($card){
-				//apply card effects here
-				//TODO: do something with target
-				$card->canAct = false;
-			}
+			$player->activateCard($cardId, $target);
+		}
+	}
+
+	public function playCard($player, $cardId, $target){
+		if($player === $this->currentPlayer()){ // legal thing to do, play on your turn
+			$player->playCard($cardId, $target);
 		}
 	}
 }

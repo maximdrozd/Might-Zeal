@@ -30,7 +30,18 @@ class Player {
 		$this->arena->triggerTurnStart();
 	}
 
-	public function playCard($cardId){
+	public function activateCard($cardId, $target = null){
+		try {
+			$card = $this->arena->find($cardId);
+			//apply card effects here
+			//TODO: do something with target
+			$card->canAct = false;
+		} catch (CardNotFoundException $e) {
+			//toast a message
+		}
+	}
+
+	public function playCard($cardId, $target = null){
 		try {
 			$card = $this->hand->find($cardId);
 			if ($this->arena->size() < Config::MAX_ARENA_SIZE) {
