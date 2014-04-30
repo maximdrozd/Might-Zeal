@@ -34,6 +34,7 @@ while(1){
 				$player->deck->add(new Card(array("id" => $i)));
 				$player->deck->mix();
 			}
+			$game->currentPlayer()->triggerTurnStart();
 			break;
 		case "endTurn":
 			$game->advanceCurrentTurn();

@@ -10,7 +10,7 @@ class Avatar {
 	public $maxMP;
 	public $class; 
 	private $classNamesAndColors;
-	private $internalTurnCounter;
+	public $internalTurnCounter;
 
 	public function __construct(){
 		$this->classNamesAndColors = array(
@@ -45,8 +45,7 @@ class Avatar {
 	}
 
 	public function triggerTurnStart(){
-		$this->currentMP++;
 		$this->internalTurnCounter++;
-		$this->currentMP = min($this->currentMP, $this->maxMP, $this->internalTurnCounter);
+		$this->currentMP = min($this->maxMP, $this->internalTurnCounter);
 	}
 }

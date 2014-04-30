@@ -65,7 +65,7 @@ class CLIPresenter {
 		}
 		$out = $this->color->getColoredString("(" . $avatar->currentHP . "/" . $avatar->maxHP . ")", "red", null);
 		$out .= $this->color->getColoredString(str_pad($turnPrefix . $player->name . " <" . $avatar->getClassName() . ">", 30, " ", STR_PAD_BOTH), $avatar->getClassColor(), null);
-		$out .= $this->color->getColoredString("(" . $avatar->currentMP . "/" . $avatar->maxMP . ")", "blue", null);
+		$out .= $this->color->getColoredString("(" . $avatar->currentMP . "/" . $avatar->maxMP . ")(" . $avatar->internalTurnCounter . ")", "blue", null);
 		return  $out."\n";
 	}
 
@@ -97,7 +97,7 @@ class CLIPresenter {
 		$out = "";
 		$arena = $player->arena;
 		foreach ($arena->getAll() as $card) {
-			if($card->canAttack){
+			if($card->canAct){
 				$out .= "{" . $card->id . "}";
 			} else {
 				$out .= "/" . $card->id . "/";
