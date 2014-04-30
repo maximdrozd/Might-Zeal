@@ -43,6 +43,7 @@ class Avatar {
 	}
 
 	public function triggerTurnStart(){
+		//FIX THIS, LOGIC IS INCORRECT
 		$this->currentMP++;
 		$this->currentMP = min($this->currentMP, $this->maxMP);
 	}
