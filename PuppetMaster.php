@@ -24,15 +24,16 @@ while(1){
 		echo "For now this is only runable from command line";
 		exit();
 	}
-	$handle = fopen ("php://stdin","r");
-	$comList = explode(" ", trim(fgets($handle)));
 
 	//just so you don't have to type init each time
 	if($firstLoop){
 		$comList[0] = 'init';
 		$firstLoop = false;
+	} else {
+		$handle = fopen("php://stdin","r");
+		$comList = explode(" ", trim(fgets($handle)));
 	}
-
+	
 	switch (trim($comList[0])) {
 		case 'init':
 			//TODO: for time being it's ok to randomly generate dummy cards. This will be a database access in future.
