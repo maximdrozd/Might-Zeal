@@ -17,6 +17,7 @@ use Game\System\Config;
 
 $game = new Game(["MZ","BZ"]);
 $presenter = new CLIPresenter($game);
+$firstLoop = true;
 
 while(1){
 	if(PHP_SAPI != "cli") {
@@ -25,6 +26,12 @@ while(1){
 	}
 	$handle = fopen ("php://stdin","r");
 	$comList = explode(" ", trim(fgets($handle)));
+
+	//just so you don't have to type init each time
+	if($firstLoop){
+		$comList[0] = 'init';
+		$firstLoop = false;
+	}
 
 	switch (trim($comList[0])) {
 		case 'init':
@@ -56,6 +63,16 @@ while(1){
 			$player = $game->getPlayerByToken($comList[1]);
 			$presenter->autoClear = false;
 			var_dump($player);
+			break;
+		case "commands":
+			echo "init - initializes the game, doesn't create a new game object\n";
+			echo "endTurn - ends current player's turn\n";
+			echo "play X - plays card id X\n";
+			echo "describe X - gives additional information about card X\n";
+			echo "token - outputs current player's secure token\n";
+			echo "player XXXX - dumps player object responding to token XXXX\n";
+			echo "commands - outputs this list\n";
+			echo "exit - quits the script\n";
 			break;
 		case "exit":
 			exit(0);

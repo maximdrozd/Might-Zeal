@@ -6,7 +6,7 @@ Tradable Collectible Card Game... but online!
 To run it...
 
 1. php PuppetMaster.php
-2. init
+2. commands - for list of commands
 
 ## Hacking
 
