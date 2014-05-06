@@ -58,12 +58,14 @@ class Game {
 	public function activateCard($player, $cardId, $target){
 		if($player === $this->currentPlayer()){ // legal thing to do, play on your turn
 			$player->activateCard($cardId, $target);
+			// use try-catch here, also add to history
 		}
 	}
 
 	public function playCard($player, $cardId, $target){
 		if($player === $this->currentPlayer()){ // legal thing to do, play on your turn
 			$player->playCard($cardId, $target);
+			// use try-catch here, also add to history
 		}
 	}
 }

@@ -24,3 +24,5 @@ Commands that PuppetMaster really needs
 * Describe $cardId - gives more information about $cardId
 * UseAbility $target - use current player avatar's ability on $target (if targetable)
 * UseWeapon $target - use current player avatar's equipped weapon on $target
+* ViewHistory $eventId - check out history event with ID $eventId
+* Exit - quits game forfeiting the match
