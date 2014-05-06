@@ -1,13 +1,11 @@
 The BIG TODO list
 
+! Create a script for KickStarter video
 * Plan database structure
 * Add database access layer
 * Change constructors to get data from static tables in storage
 * Investigate loging solution
 * Create a Game History model
-* Arrange for artwork with Danielle
-* Add History model to Game
-* Add Card Flags model to Game
 * Add timer to turns
 * Add turn duration into config
 * Add secrets concept to Avatars
