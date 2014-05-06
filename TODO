@@ -8,3 +8,19 @@ The BIG TODO list
 * Arrange for artwork with Danielle
 * Add History model to Game
 * Add Card Flags model to Game
+* Add timer to turns
+* Add turn duration into config
+* Add secrets concept to Avatars
+* Add flags to cards and Avatars
+* Rename PuppetMaster into IO
+
+Commands that PuppetMaster really needs
+
+* New $gameId - creates a new game with ID $gameId
+* Initialize $gameId $player1Name $player2Name - initializes game with ID $gameId and creates players 
+* EndTurn - ends current player's turn
+* Play $cardId $target - plays card with ID $cardId (on optional $target)
+* Activate $cardId $target - activates card in play that has ID $cardId (on optional $target)
+* Describe $cardId - gives more information about $cardId
+* UseAbility $target - use current player avatar's ability on $target (if targetable)
+* UseWeapon $target - use current player avatar's equipped weapon on $target

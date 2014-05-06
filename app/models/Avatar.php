@@ -9,6 +9,12 @@ class Avatar {
 	public $currentMP;
 	public $maxMP;
 	public $class; 
+	public $currentDefense;
+	public $secrets; //TODO: initialize
+	public $flags; //TODO: initialize
+	public $ability; //TODO: initialize
+	public $weapon; //TODO: initialize
+
 	private $classNamesAndColors;
 	public $internalTurnCounter;
 
@@ -32,6 +38,7 @@ class Avatar {
 		$this->currentHP = $this->maxHP;
 		$this->maxMP = rand(8,10);
 		$this->currentMP = 0;
+		$this->currentDefense = 0;
 		$this->class = $classes[0];
 		$this->internalTurnCounter = 0;
 	}

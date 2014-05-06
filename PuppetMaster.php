@@ -49,7 +49,7 @@ while(1){
 			break;
 		case "play":
 			$player = $game->currentPlayer();
-			$player->playCard(trim($comList[1]));
+			$game->playCard($player, trim($comList[1]), trim($comList[2]));
 			break;
 		case "describe":
 			$player = $game->currentPlayer();
