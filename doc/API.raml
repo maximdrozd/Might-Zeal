@@ -1,0 +1,296 @@
+#%RAML 0.8
+---
+title: Might Zeal
+mediaType: application/json
+documentation:
+  - title: Overview
+    content: |
+      This document describes the Might Zeal public API.
+
+      Unique resources within a global collection (e.g., a single game) are identified by an `id`. This `id` is used to construct the resource URI. As an example, a unique game would be accessed using `/games/gameId`.
+
+      Resources with an implied order (e.g., turns, or cards in a deck) are identified by a `number` instead. In this case, the URI would look like `/resources/resourceNumber`.
+
+#==============================================================================
+# Generic resource types
+#==============================================================================
+
+resourceTypes:
+
+  - collection:
+      usage: This resourceType should be used for any collection of items.
+      get:
+        description: List all <<resourcePathName>>
+        responses:
+          200:
+            description: A paginated list of all <<resourcePathName>>
+
+      post?:
+        description: Create a new <<resourcePathName | !singularize>>
+        responses:
+          200:
+            description: The <<resourcePathName | !singularize>> was created.
+
+  - member:
+      usage: This resourceType should be used for any member of a collection.
+      description: A single <<resourcePathName>>
+      uriParameters:
+        <<resourcePathName | !singularize>>Id:
+          type: integer
+
+      get:
+        description: Get a single <<resourcePathName | !singularize>>
+        responses:
+          200:
+            description: An object describing the <<resourcePathName | !singularize>>
+
+      patch?:
+        description: Update a <<resourcePathName | !singularize>>
+        responses:
+          204:
+            description: The <<resourcePathName | !singularize>> was updated.
+
+      delete?:
+        description: Delete a <<resourcePathName | !singularize>>
+        responses:
+          204:
+            description: The <<resourcePathName | !singularize>> was deleted.
+
+#==============================================================================
+# Games
+#==============================================================================
+
+/games:
+  type: collection
+
+  get:
+
+  post:
+
+  /{gameId}:
+    type: member
+    get:
+
+    delete:
+
+    /turns:
+      get:
+        description: List all turns taken during the game
+      post:
+        description: Make changes and advance the game by one turn
+
+      /{turnNumber}:
+        get:
+          description: Get a specific turn
+
+    /users:
+      get:
+        description: List all players in the game
+      post:
+        description: Join a game
+
+      /{userId}:
+        get:
+          description: Get a single player
+        delete:
+          description: Leave a game
+
+    /cards:
+      get:
+        description: List cards in the game
+        queryParameters:
+          location:
+            type: string
+            description: area of gameplay (`arena`, `deck`, `hand`, `discards`, etc.)
+          user:
+            type: integer
+            description: owner of card (`userId`)
+
+      /{cardNumber}:
+        get:
+          description: Get a single card in play
+        patch:
+          description: Modify a card in play (e.g., buff)
+        delete:
+          description: Remove a card from play
+
+      /actions:
+        post:
+          description: Use for actions that do not map to HTTP verbs (e.g., shuffle)
+
+#==============================================================================
+# Users
+#==============================================================================
+
+/users:
+  type: collection
+
+  /{userId}:
+    type: member
+    get:
+
+    /cards:
+      get:
+        description: List a user's cards
+
+    /decks:
+      get:
+        description: List a user's decks
+
+      /{deck}:
+        get:
+          description: Get a specific deck from a user's collection
+
+    /games:
+      get:
+        description: Get a user's game history
+
+#==============================================================================
+# Current user
+#==============================================================================
+
+/user:
+  description: The `/user` endpoint is a shortcut to `/users/{userId}`, where `userId` is the unique ID of the currently authenticated user ("current user"). This is a convenient way to access subresources like cards and decks.
+
+  get:
+    description: Get the current user
+
+  patch:
+    description: Update the current user
+    responses:
+      204:
+        description: The current user was updated.
+
+  /cards:
+    get:
+      description: List the current user's cards
+
+    post:
+      description: Add a card to the current user's collection
+      responses:
+        204:
+          description: The card was added to the user's collection.
+
+    /{cardId}:
+    # A GET here may be unnecessary, since we have /cards/{cardId}.
+    #  get:
+    #    description: Get a specific card from the current user's collection
+
+      delete:
+        description: Remove a card from the current user's collection
+        responses:
+          204:
+            description: The card was deleted from the user's collection.
+
+  /decks:
+    get:
+      description: List the current user's decks
+
+    post:
+      description: Add a deck to the user's collection
+
+    /{deckId}:
+      get:
+        description: Get a specific card from the current user's collection
+
+      patch:
+        description: Update a deck in the current user's collection
+
+      delete:
+        description: Remove a deck from the current user's collection
+
+      /cards:
+        post:
+          description: Add a card to a deck
+          responses:
+            200:
+
+        /{cardNumber}:
+          put:
+            description: Add or replace a card in a deck
+            responses:
+              204:
+                description: The card was replaced.
+          delete:
+            description: Remove a card from a deck
+            responses:
+              204:
+                description: The card was removed.
+
+  /games:
+    get:
+      description: Get the current user's game history
+
+  /game:
+    get:
+      description: Get the currently active game
+
+#==============================================================================
+# Decks
+#==============================================================================
+
+/decks:
+  type: collection
+  description: Decks are collections of exactly 30 cards, and are owned by a specific user. Standard decks are not owned by any user.
+
+  get:
+
+  post:
+
+  /{deckId}:
+    type: member
+
+    get:
+
+    delete:
+
+    /cards:
+      post:
+        description: Add a card to a deck
+        responses:
+          200:
+
+      /{cardNumber}:
+        put:
+          description: Add or replace a card in a deck
+          responses:
+            204:
+              description: The card was replaced.
+        delete:
+          description: Remove a card from a deck
+          responses:
+            204:
+              description: The card was removed.
+
+#==============================================================================
+# Cards
+#==============================================================================
+
+/cards:
+  type: collection
+  description: Cards are general resources, and do not belong to a particular user.
+  get:
+    responses:
+      200:
+
+  /{cardId}:
+    type: member
+    get:
+      responses:
+        200:
+
+#==============================================================================
+# Heroes
+#==============================================================================
+
+/heroes:
+  type: collection
+  get:
+    responses:
+      200:
+
+  /{heroId}:
+    type: member
+    get:
+      responses:
+        200:

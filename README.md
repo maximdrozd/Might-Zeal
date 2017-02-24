@@ -18,3 +18,9 @@ cd Might-Zeal
 curl -s https://getcomposer.org/installer | php
 php composer.phar install
 ```
+
+## Documentation
+
+The [public API](doc/API.raml) is documented using [RAML](http://raml.org/), a YAML-based language for describing RESTful APIs.
+
+You can use the very awesome [raml2html](https://github.com/kevinrenskers/raml2html) to generate a sexy HTML version.
